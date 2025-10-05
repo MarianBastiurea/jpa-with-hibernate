@@ -1,9 +1,7 @@
 package com.marianbastiurea;
 
-import com.marianbastiurea.entity.Course;
 import com.marianbastiurea.entity.FullTimeEmployee;
 import com.marianbastiurea.entity.PartTimeEmployee;
-import com.marianbastiurea.entity.Review;
 import com.marianbastiurea.repository.CourseRepository;
 import com.marianbastiurea.repository.EmployeeRepository;
 import com.marianbastiurea.repository.StudentRepository;
@@ -15,12 +13,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class JpaApplication implements CommandLineRunner {
-    private Logger logger= LoggerFactory.getLogger(JpaApplication.class);
+    private Logger logger = LoggerFactory.getLogger(JpaApplication.class);
 
     @Autowired
     CourseRepository repository;
@@ -38,16 +34,15 @@ public class JpaApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        employeeRepository.insertEmployee(new PartTimeEmployee("Jill", new BigDecimal("50")));
-        employeeRepository.insertEmployee(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+//        employeeRepository.insertEmployee(new PartTimeEmployee("Jill", new BigDecimal("50")));
+//        employeeRepository.insertEmployee(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+//
+//        logger.info("Full Time Employees -> {}",
+//                employeeRepository.retrieveAllFullTimeEmployees());
+//
+//        logger.info("Part Time Employees -> {}",
+//                employeeRepository.retrieveAllPartTimeEmployees());
 
-        logger.info("Full Time Employees -> {}",
-                employeeRepository.retrieveAllFullTimeEmployees());
-
-        logger.info("Part Time Employees -> {}",
-                employeeRepository.retrieveAllPartTimeEmployees());
-
-        
 
 //        List<Review> reviews=new ArrayList<>();
 //        Review review1=new Review("5","oooooo");
@@ -57,8 +52,7 @@ public class JpaApplication implements CommandLineRunner {
 //      repository.addReviewsForCourse(10003L,reviews);
 
 
-
-       // studentRepository.saveStudentWithPassport();
+        // studentRepository.saveStudentWithPassport();
 
 
 //        Course course=repository.findById(10001L);
