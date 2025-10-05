@@ -1,6 +1,9 @@
 package com.marianbastiurea.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -19,7 +22,7 @@ public class Review {
 
     public Review(String description, String rating) {
         this.description = description;
-        this.rating=rating;
+        this.rating = rating;
     }
 
     public String getRating() {

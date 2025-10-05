@@ -22,19 +22,19 @@ public class JPQLTest {
     @Autowired
     EntityManager entityManager;
 
-    private final Logger logger= LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     @Test
-    public void jpqlCreateQuery(){
-         List resultList=entityManager.createQuery("Select c From Course c").getResultList();
-     logger.info("Select c From Course c", resultList);
+    public void jpqlCreateQuery() {
+        List resultList = entityManager.createQuery("Select c From Course c").getResultList();
+        logger.info("Select c From Course c", resultList);
     }
 
     @Test
-    public void jpqlTypedQuery(){
-        TypedQuery<Course> query=entityManager.createQuery("Select c From Course c", Course.class);
-        List<Course> resultList=query.getResultList();
+    public void jpqlTypedQuery() {
+        TypedQuery<Course> query = entityManager.createQuery("Select c From Course c", Course.class);
+        List<Course> resultList = query.getResultList();
         logger.info("Select c From Course c", resultList);
     }
 

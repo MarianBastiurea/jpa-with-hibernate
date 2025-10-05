@@ -1,11 +1,7 @@
 package com.marianbastiurea.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +18,7 @@ public class Student {
 
     @ManyToMany
     @JoinTable(name = "STUDENT_COURSE", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
-    List<Course> courses=new ArrayList<>();
+    List<Course> courses = new ArrayList<>();
 
 
     public Student() {

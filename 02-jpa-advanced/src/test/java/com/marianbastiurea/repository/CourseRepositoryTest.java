@@ -21,22 +21,22 @@ public class CourseRepositoryTest {
 
 
     @Test
-    public void findById(){
-       Course course=courseRepository.findById(10001L);
-       assertEquals("JPA", course.getName());
+    public void findById() {
+        Course course = courseRepository.findById(10001L);
+        assertEquals("JPA", course.getName());
     }
 
     @Test
     @DirtiesContext
-    public void deleteById(){
+    public void deleteById() {
         courseRepository.deleteById(10002L);
         assertNull(courseRepository.findById(10002L));
     }
 
     @Test
-    public void saveCourse(){
+    public void saveCourse() {
         //get course
-        Course course=courseRepository.findById(10003L);
+        Course course = courseRepository.findById(10003L);
         assertEquals("Tomcat", course.getName());
 
         //set name
@@ -45,9 +45,8 @@ public class CourseRepositoryTest {
 
         //check value
 
-        Course course1=courseRepository.findById(10003L);
+        Course course1 = courseRepository.findById(10003L);
         assertEquals("Tomcat updated", course1.getName());
-
 
 
     }

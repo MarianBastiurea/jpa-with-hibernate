@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JpaApplication.class)
 public class StudentRepositoryTest {
-private Logger logger= LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     StudentRepository studentRepository;
@@ -27,12 +27,12 @@ private Logger logger= LoggerFactory.getLogger(this.getClass());
     @Test
     @Transactional
     public void retrieveStudentAndPassportDetails() {
-       Student student= entityManager.find(Student.class, 20001L);
+        Student student = entityManager.find(Student.class, 20001L);
         logger.info("Student ->{}", student);
         logger.info("Passport->{}", student.getPassport());
     }
 
-   @Test
+    @Test
     public void someTest() {
         studentRepository.someOperationToUnderstandPersistenceContext();
     }
@@ -44,5 +44,15 @@ private Logger logger= LoggerFactory.getLogger(this.getClass());
         Passport passport = entityManager.find(Passport.class, 40001L);
         logger.info("passport -> {}", passport);
         logger.info("student -> {}", passport.getStudent());
+    }
+
+
+    @org.junit.jupiter.api.Test
+    @Transactional
+    void retrieveStudentAndCourses() {
+        Student student = entityManager.find(Student.class, 20001L);
+
+        logger.info("student -> {}", student);
+        logger.info("courses -> {}", student.getCourses());
     }
 }

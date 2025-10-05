@@ -18,30 +18,30 @@ public class CourseRepository {
     @Autowired
     EntityManager entityManager;
 
-    Logger logger= LoggerFactory.getLogger(this.getClass());
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public Course findById(Long id){
+    public Course findById(Long id) {
         return entityManager.find(Course.class, id);
     }
 
-    public  void deleteById(Long id){
-        Course course=findById(id);
+    public void deleteById(Long id) {
+        Course course = findById(id);
         entityManager.remove(course);
     }
 
-    public Course save(Course course){
-        if (course.getId()==null){
+    public Course save(Course course) {
+        if (course.getId() == null) {
             entityManager.persist(course);
-        } else{
+        } else {
             entityManager.merge(course);
         }
         return course;
     }
 
-    public void playWithEntityManager(){
-        Course course1=new Course("Wine");
+    public void playWithEntityManager() {
+        Course course1 = new Course("Wine");
         entityManager.persist(course1);
-        Course course2=new Course("Cognac");
+        Course course2 = new Course("Cognac");
         entityManager.persist(course2);
         //trimite catre baza de date comanda acum, nu la sfarsitul metodei
         entityManager.flush();
@@ -56,25 +56,25 @@ public class CourseRepository {
 
     }
 
-    public void addHardCoddedReviewsForCourse(){
-        Course course=findById(10003L);
+    public void addHardCoddedReviewsForCourse() {
+        Course course = findById(10003L);
         logger.info("course.getRevies-> {}", course.getReviews());
 
-        Review review1=new Review("5","oooooo");
+        Review review1 = new Review("5", "oooooo");
         review1.setCourse(course);
         entityManager.persist(review1);
 
-        Review review2=new Review("1", "naspa");
+        Review review2 = new Review("1", "naspa");
         review2.setCourse(course);
         entityManager.persist(review2);
     }
 
 
-    public void addReviewsForCourse(Long courseId, List<Review> reviews){
-        Course course=findById(courseId);
+    public void addReviewsForCourse(Long courseId, List<Review> reviews) {
+        Course course = findById(courseId);
         logger.info("course.getRevies-> {}", course.getReviews());
 
-        for (Review review:reviews) {
+        for (Review review : reviews) {
             review.setCourse(course);
             entityManager.persist(review);
         }

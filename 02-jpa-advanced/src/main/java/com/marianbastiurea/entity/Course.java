@@ -2,7 +2,6 @@ package com.marianbastiurea.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
@@ -34,14 +33,13 @@ public class Course {
     private String name;
 
     @OneToMany(mappedBy = "course")
-    private List<Review> reviews=new ArrayList<>();
+    private List<Review> reviews = new ArrayList<>();
 
     @ManyToMany(mappedBy = "courses")
-    private  List<Student> students= new ArrayList<>();
+    private List<Student> students = new ArrayList<>();
 
 
-
-// cand am nevoie de data creearii si a ultimei modificari
+    // cand am nevoie de data creearii si a ultimei modificari
     @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
 
@@ -79,11 +77,11 @@ public class Course {
         return reviews;
     }
 
-    public void addReview(Review review){
+    public void addReview(Review review) {
         this.reviews.add(review);
     }
 
-    public  void removeReview(Review review){
+    public void removeReview(Review review) {
         this.reviews.remove(review);
     }
 
