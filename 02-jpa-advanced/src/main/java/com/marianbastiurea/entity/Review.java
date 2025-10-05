@@ -1,8 +1,6 @@
 package com.marianbastiurea.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Review {
@@ -12,6 +10,9 @@ public class Review {
     private Long id;
     private String description;
     private String rating;
+
+    @ManyToOne
+    Course course;
 
     public Review() {
     }
@@ -46,5 +47,13 @@ public class Review {
         return String.format(
                 "Review[%s] ", description);
 
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

@@ -1,6 +1,7 @@
 package com.marianbastiurea;
 
 import com.marianbastiurea.entity.Course;
+import com.marianbastiurea.entity.Review;
 import com.marianbastiurea.repository.CourseRepository;
 import com.marianbastiurea.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -9,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class JpaApplication implements CommandLineRunner {
@@ -26,7 +30,16 @@ public class JpaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        studentRepository.saveStudentWithPassport();
+        List<Review> reviews=new ArrayList<>();
+        Review review1=new Review("5","oooooo");
+        Review review2=new Review("1", "naspa");
+        reviews.add(review1);
+        reviews.add(review2);
+      repository.addReviewsForCourse(10003L,reviews);
+
+
+
+       // studentRepository.saveStudentWithPassport();
 
 
 //        Course course=repository.findById(10001L);

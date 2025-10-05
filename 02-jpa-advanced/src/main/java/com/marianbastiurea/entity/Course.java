@@ -1,15 +1,14 @@
 package com.marianbastiurea.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 // daca numele tabelului este diferit de numele clasei
@@ -34,8 +33,15 @@ public class Course {
     //@Column(name="altceva")
     private String name;
 
-// cand am nevoie de data creearii si a ultimei modificari
+    @OneToMany(mappedBy = "course")
+    private List<Review> reviews=new ArrayList<>();
 
+    @ManyToMany(mappedBy = "courses")
+    private  List<Student> students= new ArrayList<>();
+
+
+
+// cand am nevoie de data creearii si a ultimei modificari
     @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
 
@@ -67,5 +73,25 @@ public class Course {
         return String.format(
                 "Course[%s] ", name);
 
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void addReview(Review review){
+        this.reviews.add(review);
+    }
+
+    public  void removeReview(Review review){
+        this.reviews.remove(review);
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
     }
 }
