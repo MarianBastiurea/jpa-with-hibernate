@@ -47,8 +47,7 @@ public class CourseRepositoryTest {
 
         Course course1 = courseRepository.findById(10003L);
         assertEquals("Tomcat updated", course1.getName());
-
-
     }
+
 
 }

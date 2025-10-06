@@ -12,7 +12,7 @@ public class Review {
     @GeneratedValue
     private Long id;
     private String description;
-    private String rating;
+    private ReviewRating rating;
 
     @ManyToOne
     Course course;
@@ -20,16 +20,16 @@ public class Review {
     public Review() {
     }
 
-    public Review(String description, String rating) {
+    public Review(String description, ReviewRating rating) {
         this.description = description;
         this.rating = rating;
     }
 
-    public String getRating() {
+    public ReviewRating getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(ReviewRating rating) {
         this.rating = rating;
     }
 

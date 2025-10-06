@@ -74,4 +74,6 @@ public class StudentRepository {
         entityManager.persist(student);
         entityManager.persist(course);
     }
+
+
 }

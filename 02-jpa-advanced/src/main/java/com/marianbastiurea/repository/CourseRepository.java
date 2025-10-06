@@ -2,6 +2,7 @@ package com.marianbastiurea.repository;
 
 import com.marianbastiurea.entity.Course;
 import com.marianbastiurea.entity.Review;
+import com.marianbastiurea.entity.ReviewRating;
 import jakarta.persistence.EntityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,16 +56,16 @@ public class CourseRepository {
         entityManager.refresh(course1);
 
     }
-
+        
     public void addHardCoddedReviewsForCourse() {
         Course course = findById(10003L);
         logger.info("course.getRevies-> {}", course.getReviews());
 
-        Review review1 = new Review("5", "oooooo");
+        Review review1 = new Review("ooooo", ReviewRating.ONE);
         review1.setCourse(course);
         entityManager.persist(review1);
 
-        Review review2 = new Review("1", "naspa");
+        Review review2 = new Review("naspa", ReviewRating.FOUR);
         review2.setCourse(course);
         entityManager.persist(review2);
     }

@@ -1,6 +1,7 @@
 package com.marianbastiurea.repository;
 
 import com.marianbastiurea.JpaApplication;
+import com.marianbastiurea.entity.Address;
 import com.marianbastiurea.entity.Passport;
 import com.marianbastiurea.entity.Student;
 import jakarta.persistence.EntityManager;
@@ -47,12 +48,20 @@ public class StudentRepositoryTest {
     }
 
 
-    @org.junit.jupiter.api.Test
+   @Test
     @Transactional
-    void retrieveStudentAndCourses() {
+    public void retrieveStudentAndCourses() {
         Student student = entityManager.find(Student.class, 20001L);
 
         logger.info("student -> {}", student);
         logger.info("courses -> {}", student.getCourses());
+    }
+
+    @Test
+    @Transactional
+    public void setAddressDetails() {
+        Student student = entityManager.find(Student.class, 20001L);
+        student.setAddress(new Address("No 101", "Some Street", "Hyderabad"));
+        entityManager.flush();
     }
 }
