@@ -56,7 +56,7 @@ public class CourseRepository {
         entityManager.refresh(course1);
 
     }
-        
+
     public void addHardCoddedReviewsForCourse() {
         Course course = findById(10003L);
         logger.info("course.getRevies-> {}", course.getReviews());
